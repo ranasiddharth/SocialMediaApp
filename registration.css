@@ -1,0 +1,58 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+  }
+  .invalid{
+    border: 3px solid red;
+  }
+  body{
+    background-color: blanchedalmond;
+    font-family: 'TypoPRO-BebasNeue' , 'Playfair Display' , sans-serif , serif ;
+  }
+  form{
+    background-color: #293b52;
+    border: 3px solid grey;
+    margin: 20px auto;
+    padding: 20px;
+    width: 60%;
+    text-align: center;
+  }
+  h1{
+    margin-top: 25px;
+    text-align: center;
+    color: #A9A9A9;
+    opacity: 2;
+    font-weight: 1000;
+  }
+  input{
+    border-color: grey;
+    width: 100%;
+    padding: 10px;
+    color: gray;
+  }
+  #btn{
+    background-color: chartreuse;
+    color: darkblue;
+    font-weight: 700;
+    /* width: 100% !important; */
+  }
+  .valid{
+    color: #A9A9A9;
+  }
+  #gender{
+    width: 100% !important;
+  }
+  a{
+      text-decoration: none;
+      color: burlywood;
+  }
+  .red{
+    background-color: red;
+    color: white;
+    width: 100%;
+  }
+  .green{
+    background-color: green;
+    color: white;
+    width: 100%;
+  }

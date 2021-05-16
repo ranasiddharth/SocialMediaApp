@@ -1,0 +1,16 @@
+.form-div{
+    background-color: moccasin;
+    margin-top: 3em;
+    border: 1px solid gray;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.put{
+    border-radius: 10px;
+}
+body{
+    background-color: #3e4144;
+}
+.text-center{
+    color:#3e4144;
+}

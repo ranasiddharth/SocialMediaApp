@@ -3,6 +3,7 @@ include("database.php");
 include("auth_session.php");
 $msg = "";
 $css_class = "";
+$user_name="";
 if($_SERVER["REQUEST_METHOD"] === 'POST'){
   if(isset($_POST['save-user'])){
       // echo "<pre>", print_r($_FILES), "</pre>";
@@ -28,6 +29,9 @@ if($_SERVER["REQUEST_METHOD"] === 'POST'){
       }
   }
 }   
+$sqlquery = "SELECT profile_image FROM siddharth_user WHERE username='$user_name'";
+$image = mysqli_query($con, $sqlquery);
+
 ?>
 
 <!DOCTYPE html>
@@ -56,7 +60,7 @@ if($_SERVER["REQUEST_METHOD"] === 'POST'){
               <?php endif; ?>
 
               <div class="form-group text-center">
-                 <img src="images/1621264883_placeholder.jpeg" onclick="triggerClick()" id="profileDisplay" alt="">
+                 <img src="images/'1621264883_placeholder.jpeg'" onclick="triggerClick()" id="profileDisplay" alt="">
                  <label for="profileImage">Profile Image</label>
                  <input type="file" name="profileImage" onchange="displayImage(this)" id="profileImage" style="display: none;">
               </div>
@@ -78,6 +82,10 @@ if($_SERVER["REQUEST_METHOD"] === 'POST'){
 
                <div class="form-group">
                  <input type="submit" name="save-user" value="Save details" class="put btn btn-primary btn-block">
+               </div>
+
+               <div class="form-group">
+                <a href="profiles.php" class="put btn btn-primary btn-block">Chat with other users</a>
                </div>
 
                <div class="form-group">

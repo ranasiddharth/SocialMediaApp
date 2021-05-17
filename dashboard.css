@@ -14,3 +14,9 @@ body{
 .text-center{
     color:#3e4144;
 }
+#profileDisplay{
+    display: block;
+    width: 60%;
+    margin: 10px auto;
+    border-radius: 50%;
+}

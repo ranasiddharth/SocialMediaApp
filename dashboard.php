@@ -1,22 +1,31 @@
 <?php
-
+include("database.php");
 include("auth_session.php");
-// $msg = "";
-// $css_class = "";
+$msg = "";
+$css_class = "";
 if($_SERVER["REQUEST_METHOD"] === 'POST'){
   if(isset($_POST['save-user'])){
       // echo "<pre>", print_r($_FILES), "</pre>";
       $bio = $_POST['bio'];
+      $user_name = $_POST['user_name'];
+      $age = $_POST['age'];
       $profileImageName = time() . '_' . $_FILES['profileImage']['name'];
       $target = 'images/' . $profileImageName;
       move_uploaded_file($_FILES['profileImage']['tmp_name'], $target);
-      // if(move_uploaded_file($_FILES['profileImage']['tmp_name'], $target)){
-      //   $msg = "Image uploaded successfully";
-      //   $css_class = "alert-success";
-      // }else{
-      //   $msg = "Failed to upload the image";
-      //   $css_class = "alert-danger";
-      // }
+      if(move_uploaded_file($_FILES['profileImage']['tmp_name'], $target)){
+        $sql = "UPDATE siddharth_user SET profile_image='$profileImageName', age='$age', bio='$bio' WHERE username=$user_name";
+        if(mysqli_query($con, $sql)){
+          $msg = "Data updated successfully";
+          $css_class = "alert-success";
+        }else{
+          $msg = "Failed to update the details";
+          $css_class = "alert-danger";
+        }
+        
+      }else{
+          $msg = "Failed to update the details";
+          $css_class = "alert-danger";
+      }
   }
 }   
 ?>
@@ -45,14 +54,21 @@ if($_SERVER["REQUEST_METHOD"] === 'POST'){
                    <?php echo $msg;?>
                 </div>
               <?php endif; ?>
-              <div class="form-group">
+
+              <div class="form-group text-center">
+                 <img src="images/1621264883_placeholder.jpeg" onclick="triggerClick()" id="profileDisplay" alt="">
                  <label for="profileImage">Profile Image</label>
-                 <input type="file" name="profileImage" id="profileImage" class="form-control">
+                 <input type="file" name="profileImage" onchange="displayImage(this)" id="profileImage" style="display: none;">
               </div>
                
+              <div class="form-group">
+                 <label for="username">Username</label>
+                 <input type="text" name="user_name" placeholder="Username" class="form-control">
+               </div>
+
                <div class="form-group">
                  <label for="age">Age</label>
-                 <input type="text" id="age" placeholder="Age" class="form-control">
+                 <input type="text" id="age" name="age" placeholder="Age" class="form-control">
                </div>
 
                <div class="form-group">
@@ -71,5 +87,6 @@ if($_SERVER["REQUEST_METHOD"] === 'POST'){
           </div>
       </div>
   </div>
+  <script src="dashboard.js"></script>
 </body>
 </html>

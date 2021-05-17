@@ -11,9 +11,9 @@ if($_SERVER["REQUEST_METHOD"] === 'POST'){
       $age = $_POST['age'];
       $profileImageName = time() . '_' . $_FILES['profileImage']['name'];
       $target = 'images/' . $profileImageName;
-      move_uploaded_file($_FILES['profileImage']['tmp_name'], $target);
+   //   move_uploaded_file($_FILES['profileImage']['tmp_name'], $target);
       if(move_uploaded_file($_FILES['profileImage']['tmp_name'], $target)){
-        $sql = "UPDATE siddharth_user SET profile_image='$profileImageName', age='$age', bio='$bio' WHERE username=$user_name";
+        $sql = "UPDATE siddharth_user SET profile_image='$profileImageName', age='$age', bio='$bio' WHERE username='$user_name'";
         if(mysqli_query($con, $sql)){
           $msg = "Data updated successfully";
           $css_class = "alert-success";
@@ -23,7 +23,7 @@ if($_SERVER["REQUEST_METHOD"] === 'POST'){
         }
         
       }else{
-          $msg = "Failed to update the details";
+          $msg = "Failed to update";
           $css_class = "alert-danger";
       }
   }

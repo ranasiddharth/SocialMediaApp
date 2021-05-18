@@ -60,7 +60,7 @@ $image = mysqli_query($con, $sqlquery);
               <?php endif; ?>
 
               <div class="form-group text-center">
-                 <img src="images/'1621264883_placeholder.jpeg'" onclick="triggerClick()" id="profileDisplay" alt="">
+                 <img src="images/1621264883_placeholder.jpeg" onclick="triggerClick()" id="profileDisplay" alt="">
                  <label for="profileImage">Profile Image</label>
                  <input type="file" name="profileImage" onchange="displayImage(this)" id="profileImage" style="display: none;">
               </div>

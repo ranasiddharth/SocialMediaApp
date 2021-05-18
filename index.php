@@ -36,7 +36,7 @@
 
 
 
-         $query    = "INSERT INTO siddharth_user (fullname, username, email, phoneno, userpassword) VALUES (" . "\"" . $name . "\", " . "\"" . $username . "\", " . "\"" . $email . "\", " . "\"" . $phonenumber . "\", " . "\"" . $password . "\"" . ")";
+         $query    = "INSERT INTO siddharth_user (fullname, username, email, phoneno, userpassword) VALUES (" . "\"" . $name . "\", " . "\"" . $username . "\", " . "\"" . $email . "\", " . "\"" . $phonenumber . "\", " . "\"" . md5($password) . "\"" . ")";
 
          $result   = mysqli_query($con, $query);
 

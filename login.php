@@ -71,7 +71,7 @@ h1.login-title {
         $password = mysqli_real_escape_string($con, $password);
         // Check user is exist in the database
         $query    = "SELECT * FROM siddharth_user WHERE username='$username'
-                     AND userpassword='" . $password . "'";
+                     AND userpassword='" . md5($password) . "'";
         $result = mysqli_query($con, $query) or die(mysql_error());
         $rows = mysqli_num_rows($result);
 

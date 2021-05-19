@@ -10,9 +10,14 @@ if($_SERVER["REQUEST_METHOD"] === 'POST'){
       // echo "<pre>", print_r($_FILES), "</pre>";
       $bio = $_POST['bio'];
       $user_name = $_POST['user_name'];
+      
       $age = $_POST['age'];
       $profileImageName = time() . '_' . $_FILES['profileImage']['name'];
       $target = 'images/' . $profileImageName;
+      $sqlquery = "SELECT * FROM siddharth_user WHERE username='$user_name'";
+      $image = mysqli_query($con, $sqlquery);
+      $imagename = mysqli_fetch_all($image, MYSQLI_ASSOC);
+
    //   move_uploaded_file($_FILES['profileImage']['tmp_name'], $target);
       if(move_uploaded_file($_FILES['profileImage']['tmp_name'], $target)){
         $sql = "UPDATE siddharth_user SET profile_image='$profileImageName', age='$age', bio='$bio' WHERE username='$user_name'";
@@ -30,9 +35,8 @@ if($_SERVER["REQUEST_METHOD"] === 'POST'){
       }
   }
 }   
-$sqlquery = "SELECT profile_image FROM siddharth_user WHERE username='$user_name'";
-$image = mysqli_query($con, $sqlquery);
 
+//echo $imagename;
 ?>
 
 <!DOCTYPE html>
@@ -46,7 +50,6 @@ $image = mysqli_query($con, $sqlquery);
   <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
-  
   <div class="container">
       <div class="row">
           <div class="col-4 offset-md-4 form-div">

@@ -60,7 +60,11 @@
 
     }
 
-  
+    if(isset($_SESSION['rememberme']) != "NULL"){
+
+      header("Location: dashboard.php");
+
+    }  
 
 ?>
 

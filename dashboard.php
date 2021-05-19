@@ -1,6 +1,7 @@
 <?php
 include("database.php");
 include("auth_session.php");
+session_start();
 $msg = "";
 $css_class = "";
 $user_name="";

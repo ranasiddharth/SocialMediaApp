@@ -3,8 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     <title>Login</title>
-    <link rel="stylesheet" href="style.css"/>
-  
+    
     <style>
     body {
     background: #3e4144;
@@ -71,7 +70,7 @@ h1.login-title {
         $password = mysqli_real_escape_string($con, $password);
         // Check user is exist in the database
         $query    = "SELECT * FROM siddharth_user WHERE username='$username'
-                     AND userpassword='" . md5($password) . "'";
+                     AND userpassword='" . $password . "'";
         $result = mysqli_query($con, $query) or die(mysql_error());
         $rows = mysqli_num_rows($result);
 
@@ -84,9 +83,10 @@ h1.login-title {
                 setcookie('passwordcookie', $_POST['password'], time()-31536000);
             }
             $_SESSION['username'] = $username;
+            $_SESSION['password'] = $password;
             header("Location: dashboard.php");
         } else {
-            $errormsg = "Invalid credentials. PLease login again.";
+            $errormsg = "Invalid credentials. Please login again.";
         }
     }
 ?>

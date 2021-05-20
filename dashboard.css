@@ -22,3 +22,14 @@ body{
     background-position: center center;
     background-size: cover;
 }
+.profile{
+    display: block;
+    width: 60%;
+    margin: 10px auto;
+    border-radius: 50%;
+    background-position: center center;
+    background-size: cover;
+}
+/* .col-sm-10{
+   text-align: center;
+} */

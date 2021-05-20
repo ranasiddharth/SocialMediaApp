@@ -346,6 +346,218 @@ let var1 = w1.value.trim();
 
   
 
+ 
 
+  // <div class="container">
+
+  //     <div class="row">
+
+  //         <div class="col-4 offset-md-4 form-div">
+
+  //         <form action="" enctype="multipart/form-data">
+
+              
+
+  //             <h3 class="text-center">User Profile</h3>
+
+  //             <div class="form-group text-center">
+
+  //                <img src="images/<?php echo $profileimage1 ?>" id="profileDisplay" alt="">
+
+  //                <label for="profileImage">Profile Image</label>
+
+  //                <!-- <input type="file" name="profileImage" id="profileImage" style="display: none;"> -->
+
+  //             </div>
+
+               
+
+  //             <div class="form-group">
+
+  //                <label for="username">Fullname</label>
+
+  //                <input type="text" value="<?php echo $name1 ?>" class="form-control">
+
+  //              </div>
+
+  //             <div class="form-group">
+
+  //                <label for="username">Username</label>
+
+  //                <input type="text" value="<?php echo $username1 ?>" class="form-control">
+
+  //              </div>
+
+
+
+  //              <div class="form-group">
+
+  //                <label for="password">Password</label>
+
+  //                <input type="text" value="<?php echo $password1 ?>" class="form-control">
+
+  //              </div>
+
+
+
+  //              <div class="form-group">
+
+  //                <label for="contacts">Contacts</label>
+
+  //                <input type="text" value="<?php echo $phoneno1 ?>" class="form-control">
+
+  //              </div>
+
+
+
+  //              <div class="form-group">
+
+  //                <label for="email">Email</label>
+
+  //                <input type="text" value="<?php echo $email ?>" class="form-control">
+
+  //              </div>
+
+
+
+  //              <div class="form-group">
+
+  //                <label for="age">Age</label>
+
+  //                <input type="text" value="<?php echo $age1 ?>" class="form-control">
+
+  //              </div>
+
+
+
+               
+
+
+
+  //              <div class="form-group">
+
+  //                <label for="bio">Bio</label>
+
+  //                <textarea value="<?php echo $bio1 ?>" class="form-control" cols="30" rows="5"></textarea>
+
+  //              </div>
+
+  //         </form>
+
+  //         </div>
+
+  //     </div>
+
+  // </div>
+
+
+
+
+
+
+
+ 
+
+  // <div class="container">
+
+  //     <div class="row">
+
+  //         <div class="col-4 offset-md-4 form-div">
+
+  //         <form action="" enctype="multipart/form-data">
+
+
+
+  // <h3 class="text-center">User Profile</h3>
+
+  // <div class="form-group text-center">
+
+  //    <img src="images/<?php echo $profileimage ?>" id="profileDisplay" alt="">
+
+  //    <label for="profileImage">Profile Image</label>
+
+  //    <input type="file" name="profileImage" id="profileImage" style="display: none;">
+
+  // </div>
+
+   
+
+  // <div class="form-group">
+
+  //    <label for="username">Fullname</label>
+
+  //    <input type="text" value="<?php echo $name ?>" class="form-control">
+
+  //  </div>
+
+  // <div class="form-group">
+
+  //    <label for="username">Username</label>
+
+  //    <input type="text" value="<?php echo $username1 ?>" class="form-control">
+
+  //  </div>
+
+
+
+  //  <div class="form-group">
+
+  //    <label for="password">Password</label>
+
+  //    <input type="text" value="<?php echo $password1 ?>" class="form-control">
+
+  //  </div>
+
+
+
+  //  <div class="form-group">
+
+  //    <label for="contacts">Contacts</label>
+
+  //    <input type="text" value="<?php echo $phoneno ?>" class="form-control">
+
+  //  </div>
+
+
+
+  //  <div class="form-group">
+
+  //    <label for="email">Email</label>
+
+  //    <input type="text" value="<?php echo $email ?>" class="form-control">
+
+  //  </div>
+
+
+
+  //  <div class="form-group">
+
+  //    <label for="age">Age</label>
+
+  //    <input type="text" value="<?php echo $age1 ?>" class="form-control">
+
+  //  </div>
+
+
+
+   
+
+
+
+  //  <div class="form-group">
+
+  //    <label for="bio">Bio</label>
+
+  //    <textarea value="<?php echo $bio1 ?>" class="form-control" cols="30" rows="5"></textarea>
+
+  //  </div>
+
+  //  </form>
+
+  //         </div>
+
+  //     </div>
+
+  // </div>
 
 

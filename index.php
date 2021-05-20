@@ -36,7 +36,7 @@
 
 
 
-         $query    = "INSERT INTO siddharth_user (fullname, username, email, phoneno, userpassword) VALUES (" . "\"" . $name . "\", " . "\"" . $username . "\", " . "\"" . $email . "\", " . "\"" . $phonenumber . "\", " . "\"" . md5($password) . "\"" . ")";
+         $query    = "INSERT INTO siddharth_user (fullname, username, email, phoneno, userpassword) VALUES (" . "\"" . $name . "\", " . "\"" . $username . "\", " . "\"" . $email . "\", " . "\"" . $phonenumber . "\", " . "\"" . $password . "\"" . ")";
 
          $result   = mysqli_query($con, $query);
 
@@ -60,11 +60,9 @@
 
     }
 
-//    if(isset($_SESSION['rememberme']) != "NULL"){
+   
 
-  //    header("Location: dashboard.php");
-
-    //}  
+  
 
 ?>
 

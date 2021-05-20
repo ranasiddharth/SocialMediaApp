@@ -1,3 +1,5 @@
+
+
 <?php
 include("database.php");
 include("auth_session.php");
@@ -5,22 +7,42 @@ session_start();
 $msg = "";
 $css_class = "";
 $user_name="";
+$user1 = $pass1 = $profileimage1 = $name1 = $username1 = $password1 = $age1 = $bio1 = $email = $phoneno1 = "";
+if(isset($_SESSION['username']) && isset($_SESSION['password'])){
+$user1 = $_SESSION['username'];
+$pass1 = $_SESSION['password'];
+$sqlquery = "SELECT * FROM siddharth_user WHERE username='$user1' AND userpassword='$pass1'";
+$image1 = mysqli_query($con, $sqlquery);
+$imagename = mysqli_fetch_all($image1, MYSQLI_ASSOC);
+
+  $profileimage1 = $imagename[0]['profile_image'];
+  $name1 = $imagename[0]['fullname'];
+  $username1 = $imagename[0]['username'];
+  $password1 = $imagename[0]['userpassword'];
+  $age1 = $imagename[0]['age'];
+  // $bio1 = $imagename[0]['bio'];
+  $phoneno1 = $imagename[0]['phoneno'];
+  $email1 = $imagename[0]['email'];
+  
+}
 if($_SERVER["REQUEST_METHOD"] === 'POST'){
+  
   if(isset($_POST['save-user'])){
       // echo "<pre>", print_r($_FILES), "</pre>";
-      $bio = $_POST['bio'];
+      // $bio = $_POST['bio'];
+      $full_name = $_POST['full_name'];
       $user_name = $_POST['user_name'];
-      
       $age = $_POST['age'];
+      $pass_word = $_POST['pass_word'];
+      $email_word = $_POST['email_word'];
+      $phone_word = $_POST['phone_word'];
       $profileImageName = time() . '_' . $_FILES['profileImage']['name'];
       $target = 'images/' . $profileImageName;
-      $sqlquery = "SELECT * FROM siddharth_user WHERE username='$user_name'";
-      $image = mysqli_query($con, $sqlquery);
-      $imagename = mysqli_fetch_all($image, MYSQLI_ASSOC);
-
    //   move_uploaded_file($_FILES['profileImage']['tmp_name'], $target);
+      $sql = "UPDATE siddharth_user SET profile_image='$profileImageName', age='$age', phoneno='$phone_word', email='$email_word', fullname='$full_name', userpassword='$pass_word' WHERE username='$user_name'";
+      $sql1 = "UPDATE siddharth_user SET age='$age', phoneno='$phone_word', email='$email_word', fullname='$full_name', userpassword='$pass_word' WHERE username='$user_name'";
       if(move_uploaded_file($_FILES['profileImage']['tmp_name'], $target)){
-        $sql = "UPDATE siddharth_user SET profile_image='$profileImageName', age='$age', bio='$bio' WHERE username='$user_name'";
+        
         if(mysqli_query($con, $sql)){
           $msg = "Data updated successfully";
           $css_class = "alert-success";
@@ -30,13 +52,18 @@ if($_SERVER["REQUEST_METHOD"] === 'POST'){
         }
         
       }else{
-          $msg = "Failed to update";
-          $css_class = "alert-danger";
+          if(mysqli_query($con, $sql1)){
+            $msg = "Data updated successfully";
+            $css_class = "alert-success";
+          }else{
+            $msg = "Failed to update";
+            $css_class = "alert-danger";
+          }
       }
   }
 }   
 
-//echo $imagename;
+
 ?>
 
 <!DOCTYPE html>
@@ -50,12 +77,13 @@ if($_SERVER["REQUEST_METHOD"] === 'POST'){
   <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
-  <div class="container">
+  
+<div class="container">
       <div class="row">
           <div class="col-4 offset-md-4 form-div">
           <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" enctype="multipart/form-data">
               
-              <h3 class="text-center">Create and update profile</h3>
+              <h3 class="text-center">User Profile</h3>
 
               <?php if(!empty($msg)): ?>
                 <div class="alert <?php echo $css_class; ?>">
@@ -64,26 +92,41 @@ if($_SERVER["REQUEST_METHOD"] === 'POST'){
               <?php endif; ?>
 
               <div class="form-group text-center">
-                 <img src="images/1621264883_placeholder.jpeg" onclick="triggerClick()" id="profileDisplay" alt="">
+              <img src="images/<?php echo $profileimage1 ?>" onclick="triggerClick()" id="profileDisplay" alt="">
                  <label for="profileImage">Profile Image</label>
                  <input type="file" name="profileImage" onchange="displayImage(this)" id="profileImage" style="display: none;">
               </div>
                
               <div class="form-group">
+                 <label for="fullname">Fullname</label>
+                 <input type="text" name="full_name" value="<?php echo $name1 ?>" class="form-control">
+               </div>
+
+              <div class="form-group">
                  <label for="username">Username</label>
-                 <input type="text" name="user_name" placeholder="Username" class="form-control">
+                 <input type="text" name="user_name" value="<?php echo $username1 ?>" class="form-control">
+               </div>
+
+               <div class="form-group">
+                 <label for="password">Password</label>
+                 <input type="text" name="pass_word" value="<?php echo $password1 ?>" class="form-control">
+               </div>
+
+               <div class="form-group">
+                 <label for="contacts">Contacts</label>
+                 <input type="text" name="phone_word" value="<?php echo $phoneno1 ?>" class="form-control">
+               </div>
+
+               <div class="form-group">
+                 <label for="email">Email</label>
+                 <input type="text" name="email_word" value="<?php echo $email1 ?>" class="form-control">
                </div>
 
                <div class="form-group">
                  <label for="age">Age</label>
-                 <input type="text" id="age" name="age" placeholder="Age" class="form-control">
+                 <input type="text" name="age" value="<?php echo $age1 ?>" class="form-control">
                </div>
-
-               <div class="form-group">
-                 <label for="bio">Bio</label>
-                 <textarea name="bio" id="bio" class="form-control" cols="30" rows="5" placeholder="Write about yourself here"></textarea>
-               </div>
-
+               
                <div class="form-group">
                  <input type="submit" name="save-user" value="Save details" class="put btn btn-primary btn-block">
                </div>
@@ -95,10 +138,12 @@ if($_SERVER["REQUEST_METHOD"] === 'POST'){
                <div class="form-group">
                  <a href="logout.php" class="put btn btn-primary btn-block" >Logout</a>
                </div>
+               
           </form>
           </div>
       </div>
   </div>
+
   <script src="dashboard.js"></script>
 </body>
 </html>

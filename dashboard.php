@@ -8,6 +8,7 @@ $msg = "";
 $css_class = "";
 $user_name="";
 $user1 = $pass1 = $profileimage1 = $name1 = $username1 = $password1 = $age1 = $bio1 = $email = $phoneno1 = "";
+
 if(isset($_SESSION['username']) && isset($_SESSION['password'])){
 $user1 = $_SESSION['username'];
 $pass1 = $_SESSION['password'];
@@ -23,6 +24,11 @@ $imagename = mysqli_fetch_all($image1, MYSQLI_ASSOC);
   // $bio1 = $imagename[0]['bio'];
   $phoneno1 = $imagename[0]['phoneno'];
   $email1 = $imagename[0]['email'];
+
+  if(!empty($profileimage1) && !empty($name1) && !empty($username1) && !empty($password1) && !empty($age1) && !empty($phoneno1) && !empty($email1))
+  {
+    header("Location: profiles.php");
+  }
   
 }
 if($_SERVER["REQUEST_METHOD"] === 'POST'){
@@ -147,3 +153,4 @@ if($_SERVER["REQUEST_METHOD"] === 'POST'){
   <script src="dashboard.js"></script>
 </body>
 </html>
+

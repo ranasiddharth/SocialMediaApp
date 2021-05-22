@@ -8,7 +8,7 @@ $result = mysqli_query($con, $query);
 $response = "<p style='color: green;'>Available.</p>";
 if(mysqli_num_rows($result)){
     $row = mysqli_fetch_array($result);
-
+    // echo $row;
       $count = $row['counter'];
     
       if($count > 0){

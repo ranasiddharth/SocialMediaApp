@@ -2,9 +2,25 @@
 include("database.php");
 session_start();  
 
-$sql = "SELECT * FROM siddharth_user";
-$results = mysqli_query($con, $sql);
-$users = mysqli_fetch_all($results, MYSQLI_ASSOC);
+if(!isset($_SESSION['username']) && !isset($_SESSION['password'])){
+  header("Location: login.php");
+}else{
+  $sql = "SELECT * FROM siddharth_user";
+  $results = mysqli_query($con, $sql);
+  $users = mysqli_fetch_all($results, MYSQLI_ASSOC);
+}
+
+ 
+function func(){
+  setcookie("receiver", $_GET['mess']);
+  header("Location: chat.php");
+}
+
+  if(isset($_GET['mess'])){
+    func();
+  }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -46,7 +62,7 @@ $users = mysqli_fetch_all($results, MYSQLI_ASSOC);
                            <?php echo $user['email']; ?>
                          </td>
                          <td>
-                         <a href="#" class="put btn btn-primary btn-block">Chat</a>
+                         <?php echo "<a href='profiles.php?mess={$user['username']}' class='put btn btn-primary btn-block'>Chat</a>" ?>
                          </td>
                      </tr>
                      <?php endforeach; ?>
@@ -56,6 +72,11 @@ $users = mysqli_fetch_all($results, MYSQLI_ASSOC);
           </div>
       </div>
   </div>
+  <div style="width: 100px; margin: auto; margin-top: 25px; margin-bottom: 25px ;">
+    <a href="logout.php" class='put btn btn-primary btn-block'>Logout</a>
+  </div>
 
 </body>
 </html>
+
+

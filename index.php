@@ -34,7 +34,7 @@
 
          $confirmpassword = mysqli_real_escape_string($con, $confirmpassword);
 
-
+        
 
          $query    = "INSERT INTO siddharth_user (fullname, username, email, phoneno, userpassword) VALUES (" . "\"" . $name . "\", " . "\"" . $username . "\", " . "\"" . $email . "\", " . "\"" . $phonenumber . "\", " . "\"" . $password . "\"" . ")";
 
@@ -93,6 +93,8 @@
 <link rel="stylesheet" href="registration.css">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
 
 
 
@@ -174,7 +176,9 @@
 
     <br><br>
 
-    <p class="link"><a href="login.php">Already an existing user? Click to Login</a></p>
+    <p class="link">Already an existing user? <a href="login.php">Login here</a></p>
+
+    <br>
 
     <button class="green"><?php echo $success; ?></button>
 

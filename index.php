@@ -2,7 +2,11 @@
 
         $name = $email = $username = $phonenumber = $password = $confirmpassword = $success = $failure = "";
 
-        
+     if(isset($_COOKIE['usernamecookie'])){
+
+        header("Location: login.php");
+
+     }   
 
      if($_SERVER["REQUEST_METHOD"] == "POST"){
 
@@ -44,9 +48,9 @@
 
             $success = "<p class='link'>Registered successfully, Click here to <a href='login.php'>Login</a></p>";
 
-            setcookie('usernamecookie', '', time()-31536000);
+          //  setcookie('usernamecookie', '', time()-31536000);
 
-            setcookie('passwordcookie', '', time()-31536000);
+          //  setcookie('passwordcookie', '', time()-31536000);
 
             
 
@@ -142,7 +146,7 @@
 
      <option value="Female">Female</option>
 
-     <option value="Other"></option>
+     <option value="Other">Other</option>
 
     </select>
 

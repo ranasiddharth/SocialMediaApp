@@ -7,9 +7,13 @@
     <style>
     body {
     background: #3e4144;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 97vh;
 }
       .form {
-    margin: 50px auto;
+    /* margin: 50px auto; */
     width: 300px;
     padding: 30px 25px;
     padding-bottom: 10px;

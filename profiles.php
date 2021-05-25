@@ -1,11 +1,11 @@
 <?php
 include("database.php");
 session_start();  
-
+$sessionuser = $_SESSION['username'];
 if(!isset($_SESSION['username']) && !isset($_SESSION['password'])){
   header("Location: login.php");
 }else{
-  $sql = "SELECT * FROM siddharth_user";
+  $sql = "SELECT * FROM siddharth_user WHERE username NOT IN ('{$sessionuser}')";
   $results = mysqli_query($con, $sql);
   $users = mysqli_fetch_all($results, MYSQLI_ASSOC);
 }

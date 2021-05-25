@@ -11,8 +11,8 @@ $row = mysqli_fetch_assoc($result);
 $received = $row['message'];
 $time = $row['time'];
 // echo $row;
-if((int)$time+5 > time()){
-    echo $receiver . "<br>" . $received . "<br>";
+if((int)$time+4 > time()){
+    echo "<p style='color: red; margin-bottom: 0;'>" . $receiver . "</p>" . $received . "<br><br>";
 }
 else{
     echo "";

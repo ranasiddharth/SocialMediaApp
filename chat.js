@@ -20,6 +20,7 @@ sub.onclick = function(){
     }
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.send("txtvalue="+txtvalue);
+    txt.value = "";
 }
 
 setInterval(function(){

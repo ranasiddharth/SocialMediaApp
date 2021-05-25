@@ -12,7 +12,7 @@ $received = $row['message'];
 $time = $row['time'];
 // echo $row;
 if((int)$time+4 > time()){
-    echo "<p style='color: red; margin-bottom: 0;'>" . $receiver . "</p>" . $received . "<br><br>";
+    echo "<p style='color: red; margin-bottom: 0;'>" . $receiver . "</p>" . htmlspecialchars($received) . "<br><br>";
 }
 else{
     echo "";

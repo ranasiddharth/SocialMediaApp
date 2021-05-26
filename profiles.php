@@ -40,25 +40,25 @@ function func(){
           <div class="form-div">
              <table class="table table-bordered">
                  <thead>
-                     <th>Username</th>
-                     <th>Profile Image</th>
-                     <th>Age</th>
-                     <th>Email</th>
-                     <th>Chat</th>
+                     <th scope="col">Username</th>
+                     <th scope="col">Profile Image</th>
+                     <th scope="col">Age</th>
+                     <th scope="col">Email</th>
+                     <th scope="col">Chat</th>
                  </thead>
                  <tbody>
                      <?php foreach($users as $user): ?>
-                     <tr>
+                     <tr scope="row">
                          <td>
                            <?php echo $user['username']; ?>
                          </td>
                          <td>
                            <img src="images/<?php echo $user['profile_image']; ?>" width="80" height="auto" alt="">
                          </td>
-                         <td>
+                         <td class="hide">
                            <?php echo $user['age']; ?>
                          </td>
-                         <td>
+                         <td class="hide">
                            <?php echo $user['email']; ?>
                          </td>
                          <td>
@@ -71,10 +71,11 @@ function func(){
              </table>
           </div>
       </div>
+      <br>
+       <a href="logout.php" class='put btn btn-primary btn-block'>Logout</a>
+      <br>
   </div>
-  <div style="width: 100px; margin: auto; margin-top: 25px; margin-bottom: 25px ;">
-    <a href="logout.php" class='put btn btn-primary btn-block'>Logout</a>
-  </div>
+  
 
 </body>
 </html>

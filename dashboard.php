@@ -84,9 +84,9 @@ if($_SERVER["REQUEST_METHOD"] === 'POST'){
 </head>
 <body>
   
-<div class="container">
-      <div class="row">
-          <div class="col-4 offset-md-4 form-div">
+<div class="container" style='padding-left: 20%; padding-right: 20%; margin-bottom: 40px;'>
+      <div class="row" style="justify-content: center; align-items: center">
+          <div class="col-12 form-div">
           <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" enctype="multipart/form-data">
               
               <h3 class="text-center">User Profile</h3>
